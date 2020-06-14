@@ -86,7 +86,7 @@ else if (userNumber) {
 var values = []; 
 
 for (var i = 0; i <= first; i++) {
-   userChoices = decision[Math.floor(Math.random() * Math.floor(decision.length + 1))];
+   userChoices = decision[Math.floor(Math.random('') * Math.floor(decision.length + 1))];
   values.push(userChoices);
 }
 
