@@ -1,11 +1,6 @@
 // Assignment Code
 var generateBtn = document.querySelector("#generate");
-// Variables for user numbers 
-var first; 
-var userNumber;
-var userChar; 
-var userUpper;
-var userLower;
+
 // Variables for user option arrays 
 var upperCase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
@@ -17,7 +12,12 @@ var specialChar = ["!", "#", "$", "%", "&", "'", "(", ")", "*", "+", ",", "-", "
 
 
 var decision; 
-
+// Variables for user numbers 
+var first; 
+var userNumber;
+var userChar; 
+var userUpper;
+var userLower;
 
 
  //Write password to the #password input
@@ -29,69 +29,68 @@ function writePassword(event) {
   if (!first) {
     alert("This requires an input");
 } else if (first < 8 || first > 128) {
-    first = parseInt(prompt("You must choose between 8 and 128"));
+    first = parseInt(prompt("Must be between 8 and 128 characters"));
+    return 
 } else {
     userNumber = confirm("Would you like to include numbers?");
      userChar = confirm("Would you like to have special characters?");
       userUpper = confirm("Would you like to have Uppercase letters?");
      userLower = confirm("Would you like to have Lowercase letters?");
 }
- if (userNumber && userChar && userUpper && userLower ) {
+  if (userNumber && userChar && userUpper && userLower ) {
   decision = upperCase.concat(lowerCase,numbers,specialChar);
 }
-if (userNumber && userChar && userUpper ) {
+else if (userNumber && userChar && userUpper ) {
   decision = upperCase.concat(numbers,specialChar);
 }
-if (userNumber && userChar && userLower ) {
+else if (userNumber && userChar && userLower ) {
   decision = lowerCase.concat(numbers,specialChar);
 }
-if (userNumber && userUpper && userLower ) {
+else if (userNumber && userUpper && userLower ) {
   decision = upperCase.concat(lowerCase,numbers);
 }
-if (userChar && userUpper && userLower ) {
+else if (userChar && userUpper && userLower ) {
 decision = upperCase.concat(lowerCase,specialChar);
 }
-if (userNumber && userChar ) {
+else if (userNumber && userChar ) {
   decision = numbers.concat(specialChar);
 }
-if (userNumber && userUpper ) {
+else if (userNumber && userUpper ) {
   decision = upperCase.concat(numbers);
 }
-if (userNumber && userLower ) {
+else if (userNumber && userLower ) {
   decision = numbers.concat(lowerCase);
 }
-if (userUpper && userChar ) {
+else if (userUpper && userChar ) {
   decision = upperCase.concat(specialChar);
 }
-if (userLower && userChar ) {
+else if (userLower && userChar ) {
   decision = lowerCase.concat(specialChar);
 }
-if (userUpper && userLower ) {
+else if (userUpper && userLower ) {
   decision = upperCase.concat(lowerCase);
 }
-if (userUpper) {
+else if (userUpper) {
   decision = upperCase; 
 }
-if (userLower) {
+else if (userLower) {
   decision = lowerCase; 
 }
-if (userChar) {
+else if (userChar) {
   decision = specialChar; 
 }
-if (userNumber) {
+else if (userNumber) {
   decision = numbers; 
 }
 
-var passW = []; 
+var values = []; 
 
 for (var i = 0; i <= first; i++) {
-  var userChoices = decision[Math.floor(Math.random() * Math.floor(decision.length + 1))];
-  passW.push(userChoices);
+   userChoices = decision[Math.floor(Math.random() * Math.floor(decision.length + 1))];
+  values.push(userChoices);
 }
 
-var password = passW.toString(); 
-
-
+var password = values.toString(); 
 
 
   var passwordText = document.querySelector("#password").textContent = password;
